@@ -36,8 +36,8 @@ async def launch_evaluation():
     logger.info("Sending task description to green agent...")
     task_config = {
         "domain": "mock",
-        "task_id": "create_task_1",
-        "max_steps": 100,
+        "task_ids": None,
+        "max_steps": 20,
         "user_llm": "openai/gpt-4o",
         "user_llm_args": {"temperature": 0.0},
     }
@@ -56,7 +56,7 @@ You should use the following env configuration:
     print("Sending...")
     response = await a2a_send_message(green_url, task_text)
     print("Response from green agent:")
-    print(response)
+    print(response.model_dump_json(indent=2))
 
     print("Evaluation complete. Terminating agents...")
     p_green.terminate()

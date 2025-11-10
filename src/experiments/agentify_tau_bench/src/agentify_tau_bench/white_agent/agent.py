@@ -90,4 +90,11 @@ def start_white_agent(agent_name="general_white_agent", host="localhost", port=9
         http_handler=request_handler,
     )
 
-    uvicorn.run(app.build(), host=host, port=port)
+    # Increase workers and timeout to handle concurrent requests better
+    uvicorn.run(
+        app.build(),
+        host=host,
+        port=port,
+        timeout_keep_alive=300,
+        limit_concurrency=50,
+    )

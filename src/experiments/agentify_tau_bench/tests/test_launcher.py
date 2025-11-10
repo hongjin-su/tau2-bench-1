@@ -128,4 +128,4 @@ class TestLaunchEvaluation:
             assert "<white_agent_url>" in message_text
             assert "http://localhost:9002/" in message_text
             assert "<env_config>" in message_text
-            assert "retail" in message_text
+            assert "mock" in message_text

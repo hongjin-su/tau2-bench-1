@@ -20,15 +20,15 @@ Your task is to instantiate tau-bench to test the agent located at:
 http://localhost:9002/
 </white_agent_url>
 You should use the following env configuration:
-<env_config>
+<run_config>
 {
   "domain": "retail",
-  "task_id": "1",
+  "task_ids": ["1"],
   "max_steps": 100,
   "user_llm": "openai/gpt-4o",
   "user_llm_args": {
     "temperature": 0.0
-  },
+  }
 }
-</env_config>
+</run_config>
     """]

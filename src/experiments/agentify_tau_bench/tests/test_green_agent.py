@@ -66,7 +66,7 @@ class TestAskAgentToSolve:
             1.0,
             True,
             False,
-            {"simulation_run": None},
+            {"simulation_run": None, "reward_info": None},
         )
 
         # Mock white agent response
@@ -85,7 +85,7 @@ class TestAskAgentToSolve:
 
             mock_send.return_value = mock_response
             mock_get_text.return_value = [
-                f'<json>{json.dumps({"name": RESPOND_ACTION_NAME, "kwargs": {"content": "Hello"}})}</json>'
+                f'<json>{json.dumps({"name": RESPOND_ACTION_NAME, "arguments": {"content": "Hello"}})}</json>'
             ]
 
             await ask_agent_to_solve("http://white-agent", mock_env)
@@ -110,7 +110,7 @@ class TestTauGreenAgentExecutor:
         executor = TauGreenAgentExecutor()
 
         mock_context = MagicMock()
-        env_config = {"domain": "mock", "task_id": "task1"}
+        env_config = {"domain": "mock", "task_ids": ["task1"]}
         user_input = f"""
 <white_agent_url>http://localhost:9000</white_agent_url>
 <env_config>{json.dumps(env_config)}</env_config>
@@ -121,12 +121,16 @@ class TestTauGreenAgentExecutor:
         with (
             patch("agentify_tau_bench.green_agent.agent.gym.make") as mock_gym_make,
             patch(
+                "agentify_tau_bench.green_agent.agent.get_task_ids"
+            ) as mock_get_task_ids,
+            patch(
                 "agentify_tau_bench.green_agent.agent.ask_agent_to_solve"
             ) as mock_ask,
         ):
 
             mock_env = MagicMock()
             mock_gym_make.return_value = mock_env
+            mock_get_task_ids.return_value = ["task1"]
 
             # Mock successful simulation
             mock_simulation = MagicMock()
