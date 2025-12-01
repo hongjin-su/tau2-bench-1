@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0](https://github.com/sierra-research/tau2-bench/compare/v0.2.0...v0.3.0) (2025-12-01)
+
+
+### Features
+
+* **experiment:** Add hyperparam sweep experimental code ([#77](https://github.com/sierra-research/tau2-bench/issues/77)) ([558e6cd](https://github.com/sierra-research/tau2-bench/commit/558e6cd066d7bf05db587fa2dc1509765c7d03bc))
+* **gym:** add Gymnasium-compatible interface for RL training ([0ed2fd8](https://github.com/sierra-research/tau2-bench/commit/0ed2fd8d830a20657d89ae9c2efcc94838aa7129))
+
+
+### Bug Fixes
+
+* add missing gymnasium dependency ([#91](https://github.com/sierra-research/tau2-bench/issues/91)) ([a969a0c](https://github.com/sierra-research/tau2-bench/commit/a969a0c0a29bc47ba8580107932f5298ee636045))
+* communicate_info fixed to nl_assertions in Mock domain tasks ([#66](https://github.com/sierra-research/tau2-bench/issues/66)) ([702ee77](https://github.com/sierra-research/tau2-bench/commit/702ee77e497d89e9d8942ab7206c1a465b12e503))
+
 ## [Unreleased]
 
 ### Added
